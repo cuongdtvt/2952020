@@ -1,0 +1,33 @@
+<h3>Create Export</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="name">Sản Phẩm</label>
+      <select  [(ngModel)]="exports.productID"  name="productID" class="form-control" >
+        <option *ngFor="let product of products | async" type="text" 
+               value ={{product.id}}>{{product.name}}
+        </option>
+      </select>  
+    </div>
+      <div class="form-group">
+        <label for="name">Quantity</label>
+        <input type="number" min=0 oninput="validity.valid||(value='');"  class="form-control" id="qty" required [(ngModel)]="exports.qty" name="qty">
+      </div>
+
+      <div class="form-group">
+        <label for="name">Description</label>
+        <input type="text" class="form-control" id="description" required [(ngModel)]="exports.description" name="description">
+      </div>
+
+
+    <button type="submit" class="btn btn-success">Submit</button>
+    <a href="http://localhost:4200/exports" class="btn btn-primary" style="margin-left: 10px">Hủy</a>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <!-- <button class="btn btn-success" (click)="newProduct()">Add</button> -->
+</div>
+

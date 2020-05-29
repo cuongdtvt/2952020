@@ -1,0 +1,36 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Import List</h2>
+    </div>
+    <div class="panel-body">
+      <a href="http://localhost:4200/imports/add" class="btn btn-primary">Nhập</a>
+      <button (click)="reportImports()" class="btn btn-info" style="margin-left: 10px">Xuất Report</button>
+      <input type="text" placeholder="Search" [(ngModel)]= "searchText" style="margin-left: 10px"/>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let imports of imports | async | filter: searchText | paginate: { itemsPerPage: 5, currentPage: p } | filter: searchText , let i = index">
+            <td>{{imports.id}}</td>
+            <td>{{imports.productName}}</td>
+            <td>{{imports.qty}}</td>
+            <td>{{imports.description}}</td>
+            <td>{{imports.createDate}}</td>
+            <td>               
+                <button (click)="importsDetails(imports.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange) = " p = $event"></pagination-controls>
+    </div>
+  </div>
+

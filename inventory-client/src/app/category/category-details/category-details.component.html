@@ -1,0 +1,18 @@
+<h2>Category Details</h2> 
+
+<hr/>
+<div *ngIf="category">
+  <div>
+    <label><b>ID</b></label> {{category.id}}
+  </div>
+  <div>
+    <label><b>Name</b></label> {{category.name}}
+  </div>  
+  <div>
+    <label><b>Description</b></label> {{category.description}}
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back Category List</button><br>

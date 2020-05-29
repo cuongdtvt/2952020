@@ -1,0 +1,16 @@
+<h3>Update Export</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+        <label for="name">Quantity</label>
+        <input type="number" class="form-control" id="qty" required [(ngModel)]="exports.qty" name="qty">
+        </div>
+  
+        <div class="form-group">
+          <label for="name">Description</label>
+          <input type="text" class="form-control" id="description" required [(ngModel)]="exports.description" name="description">
+        </div>
+  
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>

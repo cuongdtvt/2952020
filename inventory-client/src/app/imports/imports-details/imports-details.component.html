@@ -1,0 +1,21 @@
+<h2>Import Details</h2> 
+
+<hr/>
+<div *ngIf="imports">
+  <div>
+    <label><b>  ID:</b></label> {{imports.id}}
+  </div> 
+  <div>
+    <label><b>  Quantity:   </b></label> {{imports.qty}}
+  </div> 
+  <div>
+    <label><b>  Description:    </b></label> {{imports.description}}
+  </div>
+  <div>
+    <label><b>  Date:    </b></label> {{imports.createDate}}
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Import List</button><br>

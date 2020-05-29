@@ -1,0 +1,37 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Export List</h2>
+    </div>
+    <div class="panel-body">
+      <a href="http://localhost:4200/exports/add" class="btn btn-primary">Xuất</a>
+      <button (click)="reportExports()" class="btn btn-info" style="margin-left: 10px">Xuất Report</button>
+
+      
+      <input type="text" placeholder="Search" [(ngModel)]= "searchText" style="margin-left: 10px"/>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let exports of exports | async | filter: searchText | paginate: { itemsPerPage: 5, currentPage: p } , let i = index">
+            <td>{{exports.id}}</td>
+            <td>{{exports.productName}}</td>
+            <td>{{exports.qty}}</td>
+            <td>{{exports.description}}</td>
+            <td>{{exports.createDate}}</td>
+            <td>               
+                <button (click)="exportsDetails(exports.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange) = " p = $event"></pagination-controls>
+    </div>
+  </div>

@@ -1,0 +1,21 @@
+<h2>Export Details</h2> 
+
+<hr/>
+<div *ngIf="exports">
+  <div>
+    <label><b>  ID:</b></label> {{exports.id}}
+  </div> 
+  <div>
+    <label><b>  Quantity:   </b></label> {{exports.qty}}
+  </div> 
+  <div>
+    <label><b>  Description:    </b></label> {{exports.description}}
+  </div>
+  <div>
+    <label><b>  Date:    </b></label> {{exports.createDate}}
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Export List</button><br>
