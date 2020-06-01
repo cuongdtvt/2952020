@@ -2,9 +2,13 @@
 <div [hidden]="submitted" style="width: 400px;">
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label>Category ID</label>
-        <input type="text" class="form-control" id="cateID" required [(ngModel)]="product.cateID" name="cateID">
-      </div>
+      <label for="name">Danh Mục</label>
+      <select  [(ngModel)]="product.cateID"  name="cateID" class="form-control" >
+        <option *ngFor="let category of categories | async" type="text" 
+               value ={{category.id}}>{{category.name}}
+        </option>
+      </select>  
+    </div>
   
       <div class="form-group">
         <label>Name</label>
@@ -23,9 +27,14 @@
   
       <div class="form-group">
         <label>Image</label>
-        <input type="text" class="form-control" id="imageUrl" required [(ngModel)]="product.imageUrl" name="imageUrl">
+ 
+        <input type="file" (change)="onSelectFile($event)" class="form-control" id="imageUrl" required [(ngModel)]="product.imageUrl" name="imageUrl">
+        <div *ngIf="urlImage">
+          <img [src]="urlImage" height="200" width="200" /> <br />
+      </div>
       </div>
 
     <button type="submit" class="btn btn-success">Submit</button>
+    <button (click)="gotoList()" class="btn btn-primary" style="margin-left: 10px">Hủy</button>
   </form>
 </div>

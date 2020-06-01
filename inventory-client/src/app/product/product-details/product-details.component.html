@@ -5,29 +5,29 @@
   <div>
     <label><b>  ID:</b></label> {{product.id}}
   </div>
-  <div>
-    <label><b>  Category ID:    </b></label> {{product.cateID}}
-  </div>
-  <div>
-    <label><b>  Name:   </b></label> {{product.name}}
+   <div>
+    <label><b>Name:</b></label> {{product.name}}
   </div>  
-  <div>
-    <label><b>  Description:    </b></label> {{product.description}}
+ <div>
+    <label><b>Category:</b></label> {{product.cateName}}
   </div>
   <div>
-    <label><b>  Quantity:   </b></label> {{product.qty}}
+    <label><b>Description:</b></label> {{product.description}}
   </div>
   <div>
+    <label><b>Quantity:</b></label> {{product.qty}}
+  </div>
+   <!-- <div>
     <label><b>  image:   </b></label>
     <img src="{{product.image}}">
-  </div>
-  <!-- <div>
+  </div> -->
+  <div>
     <label><b>  Image:    </b></label> 
   </div>
-  <div class="col s12">
-    <img [src]="'http://localhost:8080/images/' + product?.imageUrl" alt="Product Image">
-  </div>
-</div> -->
+<div class="col s12">
+    <img [src]="product?.imageUrl" alt="Product Image">
+  </div> 
+</div>
 
 <br>
 <br>

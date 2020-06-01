@@ -64,6 +64,11 @@ export class ExportsListComponent implements OnInit {
   exportsDetails(id: number){
     this.router.navigate(['exports/details', id])
   }
+
+  createExport(){
+    this.router.navigate(['exports/add']);
+  }
+
   
 
 }

@@ -3,7 +3,7 @@
       <h2>Import List</h2>
     </div>
     <div class="panel-body">
-      <a href="http://localhost:4200/imports/add" class="btn btn-primary">Nhập</a>
+      <button (click)="createImport()" class="btn btn-primary" style="margin-left: 10px">Nhập Sản Phẩm</button>
       <button (click)="reportImports()" class="btn btn-info" style="margin-left: 10px">Xuất Report</button>
       <input type="text" placeholder="Search" [(ngModel)]= "searchText" style="margin-left: 10px"/>
       <table class="table table-striped">
@@ -14,7 +14,7 @@
             <th>Quantity</th>
             <th>Description</th>
             <th>Date</th>
-            <th>Actions</th>
+            <!-- <th>Actions</th> -->
           </tr>
         </thead>
         <tbody>
@@ -24,9 +24,9 @@
             <td>{{imports.qty}}</td>
             <td>{{imports.description}}</td>
             <td>{{imports.createDate}}</td>
-            <td>               
+            <!-- <td>               
                 <button (click)="importsDetails(imports.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
-            </td>
+            </td> -->
           </tr>
         </tbody>
       </table>

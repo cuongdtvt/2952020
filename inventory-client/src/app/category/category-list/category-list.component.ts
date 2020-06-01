@@ -15,6 +15,11 @@ export class CategoryListComponent implements OnInit {
   categories: Observable<Category[]>;
   p: number=1; 
 
+  public popoverTitle: string = 'WARNING!!!!!!!!';
+  public popoverMessage: string ='DO YOU REALLY WANT TO DELETE THESE RECORD?';
+  public confirmClicked: boolean = false;
+  public cancelClicked: boolean = false;
+
   constructor(private categoryService: CategoryService, private router: Router) { }
 
   ngOnInit() {
@@ -37,6 +42,11 @@ export class CategoryListComponent implements OnInit {
         this.reloadData();
       },
       error => console.log(error));
+  }
+
+
+  createCategory(){
+    this.router.navigate(['/categories/add']);
   }
 
   categoryDetails(id: number){

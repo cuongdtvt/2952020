@@ -68,4 +68,8 @@ export class ImportsListComponent implements OnInit {
     this.router.navigate(['imports/details', id])
   }
 
+  createImport(){
+    this.router.navigate(['imports/add']);
+  }
+
 }

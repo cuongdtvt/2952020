@@ -1,38 +1,37 @@
 <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h2>Category List</h2>
-    </div>
-    <div class="panel-body">
-      <a href="http://localhost:4200/categories/add" class="btn btn-primary">Thêm Danh Mục</a>
-      <input type="text" placeholder="Search" [(ngModel)]= "searchText" style="margin-left: 10px"/>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let category of categories | async | filter: searchText | paginate: { itemsPerPage: 5, currentPage: p }  , let i = index">
-            <td>{{category.id}}</td>
-            <td>{{category.name}}</td>
-            <td>{{category.description}}</td>
-            <td><button (click)="categoryDetails(category.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
-                <button (click)="updateCategory(category.id)" class="btn btn-success" style="margin-left: 10px">Update</button>
-                <button class="btn btn-danger" mwlConfirmationPopover
-                                  [popoverTitle] = "popoverTitle"
-                                  [popoverMessage] = "popoverMessage"
-                                  placement = "top"
-                                  (confirm) = "deleteCategory(category.id)"
-                                  (cancel) = "cancelCliked = true " 
-                                  style="margin-left: 10px">Delete</button>               
-            </td>
-          </tr>
-          
-        </tbody>    
-      </table>
-      <pagination-controls (pageChange) = " p = $event"></pagination-controls>
-    </div>
+  <div class="panel-heading">
+    <h2>Category List</h2>
   </div>
+  <div class="panel-body">
+    <button (click)="createCategory()" class="btn btn-info" style="margin-left: 10px">Thêm Danh Mục</button>
+    <input class="float-right" type="text" placeholder="Search" [(ngModel)]="searchText" style="margin-left: 10px" />
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let category of categories | async | filter: searchText | paginate: { itemsPerPage: 20, currentPage: p }  , let i = index">
+          <td>{{category.id}}</td>
+          <td>{{category.name}}</td>
+          <td>{{category.description}}</td>
+          <td><button (click)="categoryDetails(category.id)" class="btn btn-info btn-sm"
+              style="margin-left: 10px">Details</button>
+            <button (click)="updateCategory(category.id)" class="btn btn-success btn-sm"
+              style="margin-left: 10px">Update</button>
+            <button class="btn btn-danger btn-sm" mwlConfirmationPopover [popoverTitle]="popoverTitle"
+              [popoverMessage]="popoverMessage" placement="top" (confirm)="deleteCategory(category.id)"
+              (cancel)="cancelClicked = true " style="margin-left: 10px">Delete</button>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    <pagination-controls (pageChange)=" p = $event"></pagination-controls>
+  </div>
+</div>

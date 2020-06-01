@@ -3,7 +3,7 @@
       <h2>Export List</h2>
     </div>
     <div class="panel-body">
-      <a href="http://localhost:4200/exports/add" class="btn btn-primary">Xuất</a>
+      <button (click)="createExport()" class="btn btn-primary" style="margin-left: 10px">Xuất Sản Phẩm</button>
       <button (click)="reportExports()" class="btn btn-info" style="margin-left: 10px">Xuất Report</button>
 
       
@@ -16,7 +16,7 @@
             <th>Quantity</th>
             <th>Description</th>
             <th>Date</th>
-            <th>Actions</th>
+            <!-- <th>Actions</th> -->
           </tr>
         </thead>
         <tbody>
@@ -26,9 +26,9 @@
             <td>{{exports.qty}}</td>
             <td>{{exports.description}}</td>
             <td>{{exports.createDate}}</td>
-            <td>               
+            <!-- <td>               
                 <button (click)="exportsDetails(exports.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
-            </td>
+            </td> -->
           </tr>
         </tbody>
       </table>

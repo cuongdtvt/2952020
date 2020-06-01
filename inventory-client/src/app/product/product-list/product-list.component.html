@@ -3,8 +3,8 @@
       <h2>Product List</h2>
     </div>
     <div class="panel-body">
-      <a href="http://localhost:4200/add" class="btn btn-primary">Thêm Sản Phẩm</a>
-      <input type="text" placeholder="Search" [(ngModel)]= "searchText" style="margin-left: 10px"/>
+      <button (click)="createProduct()" class="btn btn-primary" style="margin-left: 10px">Thêm Sản Phẩm</button>
+      <input class="float-right" type="text" placeholder="Search" [(ngModel)]= "searchText" style="margin-left: 10px"/>
     
       <table class="table table-striped">
         <thead>
@@ -14,6 +14,7 @@
             <th>Category Name</th>
             <th>Description</th>
             <th>Quantity</th>
+            <th>Image</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -24,11 +25,18 @@
             <td>{{product.cateName}}</td>
             <td>{{product.description}}</td>
             <td>{{product.qty}}</td>
+            <td> <img [src]="product?.imageUrl" alt="Product Image"  width="50" height="50"></td>
             <td>
                 
-                <button (click)="productDetails(product.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
-                <button (click)="updateProduct(product.id)" class="btn btn-success" style="margin-left: 10px">Update</button>
-                <button (click)="deleteProduct(product.id)" class="btn btn-danger"style="margin-left: 10px">Delete</button>
+                <button (click)="productDetails(product.id)" class="btn btn-info btn-sm" style="margin-left: 10px">Details</button>
+                <button (click)="updateProduct(product.id)" class="btn btn-success btn-sm " style="margin-left: 10px">Update</button>
+                <button class="btn btn-danger btn-sm" mwlConfirmationPopover
+                                  [popoverTitle] = "popoverTitle"
+                                  [popoverMessage] = "popoverMessage"
+                                  placement = "top"
+                                  (confirm) = "deleteProduct(product.id)"
+                                  (cancel) = "cancelClicked = true " 
+                                  style="margin-left: 10px">Delete</button> 
             </td>
           </tr>
         </tbody>

@@ -22,6 +22,12 @@ export class ProductListComponent implements OnInit {
 
   categories: Observable<Category[]>;
 
+  public popoverTitle: string = 'WARNING!!!!!!!!';
+  public popoverMessage: string ='DO YOU REALLY WANT TO DELETE THESE RECORD?';
+  public confirmClicked: boolean = false;
+  public cancelClicked: boolean = false;
+
+
   constructor(private categoryService: CategoryService,private productService: ProductService, private router: Router) { }
 
   ngOnInit() {
@@ -47,6 +53,9 @@ export class ProductListComponent implements OnInit {
   }
 
   
+  createProduct(){
+    this.router.navigate(['add']);
+  }
   productDetails(id: number){
     this.router.navigate(['details', id]);
   }
