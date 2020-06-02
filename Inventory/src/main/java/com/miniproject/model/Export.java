@@ -6,13 +6,9 @@ public class Export {
 	
 
 
-	
-
 	private long id;
 
 	private long productID;
-	
-	private String productName;
 
 	private long qty;
 
@@ -35,16 +31,6 @@ public class Export {
 		this.createDate = createDate;
 	}
 	
-	public Export(long id, long productID, String productName, long qty, String description, Date createDate) {
-		this.id = id;
-		this.productID = productID;
-		this.productName = productName;
-		this.qty = qty;
-		this.description = description;
-		this.createDate = createDate;
-	}
-
-	
 	
 	public long getId() {
 		return id;
@@ -60,15 +46,6 @@ public class Export {
 
 	public void setProductID(long productID) {
 		this.productID = productID;
-	}
-	
-	public String getProductName() {
-		return productName;
-	}
-
-
-	public void setProductName(String productName) {
-		this.productName = productName;
 	}
 
 	public long getQty() {
@@ -95,10 +72,6 @@ public class Export {
 		this.createDate = createDate;
 	}
 
-	@Override
-	public String toString() {
-		return "Export [id=" + id + ", productID=" + productID + ", qty=" + qty + ", description=" + description
-				+ ", createDate=" + createDate + "]";
-	}
+
 
 }

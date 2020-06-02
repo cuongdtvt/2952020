@@ -19,7 +19,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.miniproject.model.Invoice;
 import com.miniproject.service.InvoiceService;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class InvoiceController {
 

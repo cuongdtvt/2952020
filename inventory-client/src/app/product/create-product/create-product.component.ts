@@ -14,7 +14,7 @@ import { CategoryService } from 'src/app/category/category.service';
   styleUrls: ['./create-product.component.css']
 })
 export class CreateProductComponent implements OnInit {
-
+  products: Observable<Product[]>;
   product: Product = new Product();
   submitted = false;
   urlImage: any = ""
@@ -39,9 +39,14 @@ export class CreateProductComponent implements OnInit {
     this.productService.createProduct(this.product)
       .subscribe(data => console.log(data));
     this.product = new Product();
+    this.reloadData();  
     this.gotoList();
+    
   }
 
+  reloadData() {
+    this.products = this.productService.getProductsList();
+  }
 
   onSubmit() {
     this.submitted = true;

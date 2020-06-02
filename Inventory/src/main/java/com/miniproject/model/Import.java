@@ -6,24 +6,15 @@ public class Import {
 	
 
 
-
-
 	private long id;
 
 	private long productID;
-	
-	private String productName;
-	
+
 	private long qty;
 
 	private String description;
 	
 	private Date createDate;
-	
-	
-
-
-	
 	
 	
 	public Import() {
@@ -41,18 +32,6 @@ public class Import {
 	}
 	
 	
-	
-	
-	public Import(long id, long productID, String productName, long qty, String description, Date createDate) {
-		this.id = id;
-		this.productID = productID;
-		this.productName = productName;
-		this.qty = qty;
-		this.description = description;
-		this.createDate = createDate;
-	}
-
-
 	public long getId() {
 		return id;
 	}
@@ -67,15 +46,6 @@ public class Import {
 
 	public void setProductID(long productID) {
 		this.productID = productID;
-	}
-
-	public String getProductName() {
-		return productName;
-	}
-
-
-	public void setProductName(String productName) {
-		this.productName = productName;
 	}
 
 	public long getQty() {
@@ -101,12 +71,7 @@ public class Import {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	
-	@Override
-	public String toString() {
-		return "Import [id=" + id + ", productID=" + productID + ", qty=" + qty + ", description=" + description
-				+ ", createDate=" + createDate + "]";
-	}
+
 
 
 }

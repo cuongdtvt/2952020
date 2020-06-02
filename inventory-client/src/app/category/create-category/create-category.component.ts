@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../category.service';
 import { Category } from '../category';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -13,6 +14,8 @@ export class CreateCategoryComponent implements OnInit {
 
   category: Category = new Category();
   submitted = false; 
+
+  categories: Observable<Category[]>;
 
   constructor( private categoryService: CategoryService, private router: Router) { }
 
@@ -28,7 +31,12 @@ export class CreateCategoryComponent implements OnInit {
     this.categoryService.createCategory(this.category)
       .subscribe(data => console.log(data), error => console.log(error));
     this.category = new Category();
+    this.reloadData();
     this.gotoList();
+  }
+
+  reloadData() {
+    this.categories = this.categoryService.getCategoryList();
   }
 
   onSubmit(){

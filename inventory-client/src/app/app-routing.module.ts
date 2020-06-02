@@ -23,6 +23,7 @@ import { ExportsDetailsComponent } from './exports/exports-details/exports-detai
 import { CreateExportsComponent } from './exports/create-exports/create-exports.component';
 
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'product', pathMatch: 'full' },
   { path: 'products', component: ProductListComponent },
@@ -44,6 +45,9 @@ const routes: Routes = [
   { path: 'exports/add', component: CreateExportsComponent },
   { path: 'exports/update/:id', component: UpdateExportsComponent },
   { path: 'exports/details/:id', component: ExportsDetailsComponent },
+
+  
+
   
 
   

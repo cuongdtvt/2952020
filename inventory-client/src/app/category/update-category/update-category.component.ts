@@ -3,6 +3,8 @@ import { Category } from '../category';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from '../category.service';
 
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-update-category',
   templateUrl: './update-category.component.html',
@@ -12,6 +14,8 @@ export class UpdateCategoryComponent implements OnInit {
 
   id: number;
   category: Category;
+
+  categories: Observable<Category[]>;
 
   constructor(private route: ActivatedRoute, private router: Router, private categoryService: CategoryService) { }
 
@@ -32,7 +36,12 @@ export class UpdateCategoryComponent implements OnInit {
     this.categoryService.updateCategory(this.id, this.category)
     .subscribe(data => console.log(data), error => console.log(error));
   this.category = new Category();
+  this.reloadData();
   this.gotoList();
+  }
+
+  reloadData() {
+    this.categories = this.categoryService.getCategoryList();
   }
 
   onSubmit(){

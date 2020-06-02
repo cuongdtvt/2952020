@@ -1,7 +1,8 @@
 <h3>Create Export</h3>
 <div [hidden]="submitted" style="width: 400px;">
   <form (ngSubmit)="onSubmit()">
-
+    
+    
     <div class="form-group">
       <label for="name">Sản Phẩm</label>
       <select  [(ngModel)]="exports.productID"  name="productID" class="form-control" >
@@ -12,7 +13,7 @@
     </div>
       <div class="form-group">
         <label for="name">Quantity</label>
-        <input type="number" min=0 oninput="validity.valid||(value='');"  class="form-control" id="qty" required [(ngModel)]="exports.qty" name="qty">
+        <input type="number" min=0 oninput="validity.valid||(value='');" class="form-control" id="qty" required [(ngModel)]="exports.qty" name="qty">
       </div>
 
       <div class="form-group">

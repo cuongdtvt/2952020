@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipe } from 'ng2-search-filter';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import { ChartsModule } from 'ng2-charts';
+
 
 import { CreateProductComponent } from './product/create-product/create-product.component';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
@@ -29,6 +31,10 @@ import { CreateExportsComponent } from './exports/create-exports/create-exports.
 import { ExportsDetailsComponent } from './exports/exports-details/exports-details.component';
 import { ExportsListComponent } from './exports/exports-list/exports-list.component';
 import { UpdateExportsComponent } from './exports/update-exports/update-exports.component';
+
+
+
+import { LineChartComponent } from './line-chart/line-chart.component';
 
 
 @NgModule({
@@ -55,9 +61,14 @@ import { UpdateExportsComponent } from './exports/update-exports/update-exports.
     ExportsListComponent,
     UpdateExportsComponent,
     Ng2SearchPipe,
+
+    LineChartComponent,
+
+  
     
   ],
   imports: [
+    ChartsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

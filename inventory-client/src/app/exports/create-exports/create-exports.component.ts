@@ -14,27 +14,35 @@ import { Product } from 'src/app/product/product';
   styleUrls: ['./create-exports.component.css']
 })
 export class CreateExportsComponent implements OnInit {
+
   exports: Exports = new Exports();
   submitted = false;
 
   products: Observable<Product[]>;
-
-  constructor(private productService: ProductService,private router: Router, private exportsService: ExportsService) { }
+  exports1: Observable<Exports[]>;
+  constructor(private productService: ProductService, private router: Router, private exportsService: ExportsService) { }
 
   ngOnInit() {
     this.products = this.productService.getProductsList();
   }
 
-  newExports(): void{
+  newExports(): void {
     this.submitted = false;
     this.exports = new Exports();
   }
 
+  reloadData() {
+    this.exports1 = this.exportsService.getExportsList();
+  }
+
   save() {
+    console.log(this.exports)
     this.exportsService.createExports(this.exports)
-    .subscribe(data => console.log(data), error => console.log(error));
-  this.exports = new Exports();
-  this.gotoList();
+      .subscribe(data => console.log(data), error => console.log(error));
+    this.exports = new Exports();
+    this.reloadData();
+    this.gotoList();
+   
   }
 
   onSubmit(){
@@ -42,7 +50,8 @@ export class CreateExportsComponent implements OnInit {
     this.save();
   }
 
-  gotoList(){
-    this.router.navigate(['/exports'])
+  gotoList() {
+    this.router.navigate(['/exports']);
   }
 }
+

@@ -16,7 +16,7 @@ export class ExportsService {
   }
 
   createExports(exports: object): Observable<Object> {
-    return this.http.get(`${this.baseUrl}`, exports);
+    return this.http.post(`${this.baseUrl}`, exports);
   }
 
   updateExports(id: number, value: any): Observable<Object> {

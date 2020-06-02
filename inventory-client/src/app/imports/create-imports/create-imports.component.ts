@@ -18,7 +18,7 @@ export class CreateImportsComponent implements OnInit {
   submitted = false;
 
   products: Observable<Product[]>;
-
+  imports1: Observable<Imports[]>;
   constructor(private productService: ProductService, private router: Router, private importsService: ImportsService) { }
 
   ngOnInit() {
@@ -30,11 +30,18 @@ export class CreateImportsComponent implements OnInit {
     this.imports = new Imports();
   }
 
+  reloadData() {
+    this.imports1 = this.importsService.getImportsList();
+  }
+
   save() {
+    console.log(this.imports)
     this.importsService.createImports(this.imports)
       .subscribe(data => console.log(data), error => console.log(error));
     this.imports = new Imports();
+    this.reloadData();
     this.gotoList();
+    
   }
 
   onSubmit(){
