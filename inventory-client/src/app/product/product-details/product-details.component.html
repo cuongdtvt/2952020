@@ -1,7 +1,10 @@
 <h2>Product Details</h2> 
 
 <hr/>
-<div *ngIf="product">
+
+<div class ="row" *ngIf="product">
+
+  <div class = "col-4" style = "font-size : 20px" >
   <div>
     <label><b>  ID:</b></label> {{product.id}}
   </div>
@@ -17,17 +20,19 @@
   <div>
     <label><b>Quantity:</b></label> {{product.qty}}
   </div>
+</div>  
    <!-- <div>
     <label><b>  image:   </b></label>
     <img src="{{product.image}}">
   </div> -->
-  <div>
-    <label><b>  Image:    </b></label> 
-  </div>
-<div class="col s12">
-    <img [src]="product?.imageUrl" alt="Product Image">
+ 
+<div class="col-8">
+  
+    <img [src]="product?.imageUrl" style = "max-width: 600px; max-height: 600px; object-fit:fill"   alt="Product Image">
   </div> 
-</div>
+
+
+
 
 <br>
 <br>

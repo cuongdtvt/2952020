@@ -37,6 +37,7 @@ export class ProductListComponent implements OnInit {
   
   reloadData() {
     this.products = this.productService.getProductsList();
+    console.log(this.products);
   }
 
   updateProduct(id: number) {

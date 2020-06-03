@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
+import { formatDate } from '@angular/common';
+import { ChartService } from '../chart.service';
+import { HttpClient , HttpClientModule} from '@angular/common/http';
+import { Chart } from '../chart';
+
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-line-chart',
@@ -9,20 +16,62 @@ import { Color, Label } from 'ng2-charts';
 })
 export class LineChartComponent implements OnInit {
 
-  constructor() { }
+  
+
+   abc: any[]=  [];
+   bcd: any[]= [];
+
+
+  constructor(private chartService : ChartService,private http: HttpClient) { }
 
   ngOnInit() {
-  }
+      for (let i = 6; i >= 0;i--)
+         { 
+              let day : string = new Date(new Date().getFullYear(), new Date().getMonth(),new Date().getDate()-i).toString();
+              let date = formatDate(day, "dd-MM-yyyy", "en");
+              this.lineChartLabels.push(date);
+          }
+   console.log(this.lineChartLabels);
 
+ 
+        
+      this.chartService.getStatistics7Exports()
+        .subscribe(res => {
+          console.log(res)
+          for(let i = 0; i < res.length; i++) {
+            console.log(res[i].qty)
+            
+            this.abc.push(res[i].qty);
+          }
+
+      });
+
+      this.chartService.getStatistics7Imports()
+      .subscribe(res => {
+        console.log(res)
+        for(let i = 0; i < res.length; i++) {
+          console.log(res[i].qty)
+          
+          this.bcd.push(res[i].qty);
+        }
+
+    })
+
+
+
+
+ 
+  }
+   
 
    // Array of different segments in chart
    lineChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Product A' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Product B' }
+    { data: this.abc, label: 'Xuất Hàng' },
+    { data: this.bcd, label: 'Nhập Hàng' }
   ];
 
   //Labels shown on the x-axis
-  lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  lineChartLabels: Label[] = [];
 
   // Define chart options
   lineChartOptions: ChartOptions = {

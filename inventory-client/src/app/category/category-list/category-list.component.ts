@@ -24,10 +24,12 @@ export class CategoryListComponent implements OnInit {
 
   ngOnInit() {
     this.reloadData();
+    console.log(this.reloadData)
   }
   
   reloadData() {
     this.categories = this.categoryService.getCategoryList();
+    console.log(this.categories)
   }
 
   updateCategory(id: number) {

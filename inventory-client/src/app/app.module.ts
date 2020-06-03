@@ -34,7 +34,7 @@ import { UpdateExportsComponent } from './exports/update-exports/update-exports.
 
 
 
-import { LineChartComponent } from './line-chart/line-chart.component';
+import { LineChartComponent } from './chart/line-chart/line-chart.component';
 
 
 @NgModule({

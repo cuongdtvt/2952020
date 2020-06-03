@@ -22,6 +22,7 @@ import { UpdateExportsComponent } from './exports/update-exports/update-exports.
 import { ExportsDetailsComponent } from './exports/exports-details/exports-details.component';
 import { CreateExportsComponent } from './exports/create-exports/create-exports.component';
 
+import { LineChartComponent } from './chart/line-chart/line-chart.component';
 
 
 const routes: Routes = [
@@ -46,6 +47,8 @@ const routes: Routes = [
   { path: 'exports/update/:id', component: UpdateExportsComponent },
   { path: 'exports/details/:id', component: ExportsDetailsComponent },
 
+  { path: 'chart', component: LineChartComponent},
+ 
   
 
   
