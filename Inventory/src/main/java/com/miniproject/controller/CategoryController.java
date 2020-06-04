@@ -18,7 +18,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.miniproject.model.Category;
 import com.miniproject.service.CategoryService;
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
+
 @RestController
 public class CategoryController {
 

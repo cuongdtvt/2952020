@@ -22,9 +22,9 @@ public class ExportImp implements IExportRepo{
 	@Override
 	public int save(Export export) {
 		return jdbcTemplate.update(
-				"DECLARE @idExport bigint insert into export (product_id, qty, description, create_date) values(?,?,?,getdate()) SELECT @idExport = SCOPE_IDENTITY() UPDATE [dbo].[product] SET [qty] = (SELECT (SELECT qty FROM product WHERE id = ?) + (SELECT qty FROM export WHERE id = @idExport)) WHERE id = ?",
+				"DECLARE @idExport bigint insert into export (product_id, qty, description, create_date) values(?,?,?,getdate()) SELECT @idExport = SCOPE_IDENTITY() UPDATE [dbo].[product] SET [qty] = (SELECT (SELECT qty FROM product WHERE id = ?) - (SELECT qty FROM export WHERE id = @idExport)) WHERE id = ?",
 				
-                export.getProductID(), export.getQty(), export.getDescription() );
+                export.getProductID(), export.getQty(), export.getDescription(),export.getProductID(),export.getProductID() );
 	}
 
 	@Override

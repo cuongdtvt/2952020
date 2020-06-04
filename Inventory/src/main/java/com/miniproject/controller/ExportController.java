@@ -1,14 +1,18 @@
 package com.miniproject.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,8 +22,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.miniproject.model.Export;
 import com.miniproject.service.ExportService;
+import com.miniproject.util.ExcelGenerator2;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class ExportController {
 	private ExportService exportService;
@@ -82,5 +87,21 @@ public class ExportController {
 		exportService.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
+	
+	@GetMapping(value = "/exports/report")
+	 public ResponseEntity<InputStreamResource> excelCustomersReport() throws IOException {
+       List<Export> exports = (List<Export>) exportService.findAll();
+   
+   ByteArrayInputStream in = ExcelGenerator2.customersToExcel(exports);
+   // return IOUtils.toByteArray(in);
+   
+   HttpHeaders headers = new HttpHeaders();
+       headers.add("Content-Disposition", "attachment; filename=customers.xlsx");
+   
+    return ResponseEntity
+                 .ok()
+                 .headers(headers)
+                 .body(new InputStreamResource(in));
+   }
 	
 }

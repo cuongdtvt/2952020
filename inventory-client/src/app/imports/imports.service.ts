@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class ImportsService {
   
-  private baseUrl = 'http://localhost:8080/imports'
-  private baseUrl1 = 'http://localhost:8080/imports/report'
+  private baseUrl = 'http://192.168.144.123:8080/imports'
+  private baseUrl1 = 'http://192.168.144.123:8080/imports/report'
   
   constructor(private http: HttpClient) { }
   getImports(id: number): Observable<any>{

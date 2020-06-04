@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CreationHelper;
+import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
@@ -20,7 +21,7 @@ import com.miniproject.model.Export;
 public class ExcelGenerator2 {
 
 	public static ByteArrayInputStream customersToExcel(List<Export> exports) throws IOException {
-	    String[] COLUMNs = {"Id", "Product ID", "Quantity", "Description", "Create Date"};
+	    String[] COLUMNs = {"ID", "Product Name", "Quantity", "Description", "Create Date"};
 	    try(
 	        Workbook workbook = new XSSFWorkbook();
 	        ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -31,10 +32,12 @@ public class ExcelGenerator2 {
 	   
 	      Font headerFont = workbook.createFont();
 	      headerFont.setBold(true);
-	      headerFont.setColor(IndexedColors.BLUE.getIndex());
+	      headerFont.setColor(IndexedColors.WHITE.getIndex());
 	   
 	      CellStyle headerCellStyle = workbook.createCellStyle();
 	      headerCellStyle.setFont(headerFont);
+	      headerCellStyle.setFillForegroundColor(IndexedColors.GREEN.getIndex());
+	      headerCellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 	   
 	      // Row for Header
 	      Row headerRow = sheet.createRow(0);
@@ -44,6 +47,7 @@ public class ExcelGenerator2 {
 	        Cell cell = headerRow.createCell(col);
 	        cell.setCellValue(COLUMNs[col]);
 	        cell.setCellStyle(headerCellStyle);
+	        sheet.autoSizeColumn(col);
 	      }
 	   
 	      // CellStyle for Age
@@ -53,13 +57,13 @@ public class ExcelGenerator2 {
 	      int rowIdx = 1;
 	      for (Export export1 : exports) {
 	        Row row = sheet.createRow(rowIdx++);
-	   
+	        
 	        row.createCell(0).setCellValue(export1.getId());
-	        row.createCell(1).setCellValue(export1.getProductID());
+	        row.createCell(1).setCellValue(export1.getProductName());
 	        row.createCell(2).setCellValue(export1.getQty());
 	        row.createCell(3).setCellValue(export1.getDescription());
 	        row.createCell(4).setCellValue(DateUtil.dateToString(export1.getCreateDate()));
-	       
+	        
 	      }
 	   
 	      workbook.write(out);

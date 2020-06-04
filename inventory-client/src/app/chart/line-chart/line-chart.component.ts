@@ -82,11 +82,11 @@ export class LineChartComponent implements OnInit {
   lineChartColors: Color[] = [
 
     { // dark grey
-      backgroundColor: 'rgba(77,83,96,0.2)',
-      borderColor: 'rgba(77,83,96,1)',
+      backgroundColor: 'rgba(30,144,255,0.3)',
+      borderColor: 'rgba(30,144,255,1)',
     },
     { // red
-      backgroundColor: 'rgba(255,0,0,0.3)',
+      backgroundColor: 'rgba(255,0,0,0.1)',
       borderColor: 'red',
     }
   ];

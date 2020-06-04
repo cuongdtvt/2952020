@@ -4,10 +4,12 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
- 
+
+
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CreationHelper;
+import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
@@ -20,7 +22,7 @@ import com.miniproject.model.Import;
 public class ExcelGenerator {
 
 	public static ByteArrayInputStream customersToExcel(List<Import> imports) throws IOException {
-	    String[] COLUMNs = {"Id", "Product ID", "Quantity", "Description", "Create Date"};
+	    String[] COLUMNs = {"ID", "Product ID", "Quantity", "Description", "Create Date"};
 	    try(
 	        Workbook workbook = new XSSFWorkbook();
 	        ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -28,14 +30,18 @@ public class ExcelGenerator {
 	      CreationHelper createHelper = workbook.getCreationHelper();
 	   
 	      Sheet sheet = workbook.createSheet("Import");
-	   
+	  
+	      
+	      
 	      Font headerFont = workbook.createFont();
 	      headerFont.setBold(true);
-	      headerFont.setColor(IndexedColors.BLUE.getIndex());
+	      headerFont.setColor(IndexedColors.WHITE.getIndex());
+	      
 	   
 	      CellStyle headerCellStyle = workbook.createCellStyle();
 	      headerCellStyle.setFont(headerFont);
-	   
+	      headerCellStyle.setFillForegroundColor(IndexedColors.GREEN.getIndex());
+	      headerCellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 	      // Row for Header
 	      Row headerRow = sheet.createRow(0);
 	   
@@ -44,6 +50,8 @@ public class ExcelGenerator {
 	        Cell cell = headerRow.createCell(col);
 	        cell.setCellValue(COLUMNs[col]);
 	        cell.setCellStyle(headerCellStyle);
+	        sheet.autoSizeColumn(col);
+	        
 	      }
 	   
 	      // CellStyle for Age
@@ -53,7 +61,7 @@ public class ExcelGenerator {
 	      int rowIdx = 1;
 	      for (Import import1 : imports) {
 	        Row row = sheet.createRow(rowIdx++);
-	   
+	        
 	        row.createCell(0).setCellValue(import1.getId());
 	        row.createCell(1).setCellValue(import1.getProductID());
 	        row.createCell(2).setCellValue(import1.getQty());

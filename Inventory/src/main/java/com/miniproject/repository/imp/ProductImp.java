@@ -73,27 +73,29 @@ public class ProductImp implements IProductRepo{
 	                                rs.getLong("id"),
 	                                rs.getLong("cate_id"),
 	                                rs.getString("name"),
-	                                rs.getString("cateName"),	                     
-	                                
+	                                rs.getString("cateName"),	                                                  
 	                                rs.getString("description"),
 	                                rs.getLong("qty"),
 	                                rs.getString("imageUrl")
 	                        )
-	        );	}
+	        );}
+	
+	
 
 	@Override
 	public Optional<Product> findById(Long id) {
 		return jdbcTemplate.queryForObject(
-                "select * from product where id = ?",
+                "select p.id,p.cate_id,p.name,c.name as cateName,  p.description, p.qty, p.imageUrl from  product p join category c on c.id = p.cate_id where p.id =?",
                 new Object[]{id},
                 (rs, rowNum) ->
                         Optional.of(new Product(
-                                rs.getLong("id"),
-                                rs.getLong("cate_id"),	                     
-                                rs.getString("name"),
-                                rs.getString("description"),
-                                rs.getLong("qty"),
-                                rs.getString("imageUrl")
+                        		   	rs.getLong("id"),
+	                                rs.getLong("cate_id"),
+	                                rs.getString("name"),
+	                                rs.getString("cateName"),	                                                  
+	                                rs.getString("description"),
+	                                rs.getLong("qty"),
+	                                rs.getString("imageUrl")
                         )
         ));
 	}

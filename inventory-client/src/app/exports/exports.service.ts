@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class ExportsService {
  
-  private baseUrl = 'http://localhost:8080/exports'
-  private baseUrl1 = 'http://localhost:8080/exports/report'
+  private baseUrl = 'http://192.168.144.123:8080/exports'
+  private baseUrl1 = 'http://192.168.144.123:8080/exports/report'
   constructor(private http: HttpClient) { }
 
   getExports(id: number): Observable<any> {

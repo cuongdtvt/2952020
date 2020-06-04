@@ -6,10 +6,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ChartService {
-  private baseUrl1 = 'http://localhost:8080/statistics7exports'
-  private baseUrl2 = 'http://localhost:8080/statistics30exports'
-  private baseUrl3 = 'http://localhost:8080/statistics7imports'
-  private baseUrl4 = 'http://localhost:8080/statistics30imports'
+  private baseUrl1 = 'http://192.168.144.123:8080/statistics7exports'
+  private baseUrl2 = 'http://192.168.144.123:8080/statistics30exports'
+  private baseUrl3 = 'http://192.168.144.123:8080/statistics7imports'
+  private baseUrl4 = 'http://192.168.144.123:8080/statistics30imports'
   
   constructor(private http: HttpClient) { }
 
